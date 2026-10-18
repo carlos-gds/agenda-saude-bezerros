@@ -553,26 +553,6 @@ h3 {
   color: #95a4a8;
   margin-top: 3px;
 }
-.pill {
-  display: inline-flex;
-  border-radius: 20px;
-  padding: 5px 9px;
-  font-size: 9px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-.pill.green {
-  background: #e1f6ed;
-  color: #18825a;
-}
-.pill.blue {
-  background: #e5effc;
-  color: #3d74c0;
-}
-.pill.orange {
-  background: #fff1df;
-  color: #bd711c;
-}
 .reminder {
   background: #e9f8f5;
 }

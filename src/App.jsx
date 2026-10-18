@@ -1,4 +1,11 @@
 import React, { useCallback, useState } from "react";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { AppLayout } from "./components/AppLayout";
 import { Toast } from "./components/common";
 import { initialAppointments } from "./data/mockData";
@@ -8,22 +15,58 @@ import { DashboardPage } from "./pages/DashboardPage";
 import { ExamsPage } from "./pages/ExamsPage";
 import { HomePage } from "./pages/HomePage";
 
+const pagePaths = {
+  inicio: "/",
+  agendamento: "/agendamento",
+  atendimentos: "/atendimentos",
+  exames: "/exames",
+  painel: "/painel",
+};
+
+const pathPages = Object.entries(pagePaths).reduce(
+  (pages, [page, path]) => ({ ...pages, [path]: page }),
+  {},
+);
+
 /**
- * Controla o estado da demonstração e seleciona a página atual.
- * @returns {JSX.Element} Aplicação completa.
+ * Declara as rotas da aplicação e encaminha caminhos desconhecidos para o início.
+ * @returns {JSX.Element} Árvore de rotas do projeto.
  */
 export default function App() {
-  const [currentPage, setCurrentPage] = useState("inicio");
+  return (
+    <Routes>
+      <Route path="/" element={<AppShell />} />
+      <Route path="/agendamento" element={<AppShell />} />
+      <Route path="/atendimentos" element={<AppShell />} />
+      <Route path="/exames" element={<AppShell />} />
+      <Route path="/painel" element={<AppShell />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
+}
+
+/**
+ * Controla o estado compartilhado e exibe a página correspondente à rota atual.
+ * @returns {JSX.Element} Layout completo da aplicação.
+ */
+function AppShell() {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [appointments, setAppointments] = useState(initialAppointments);
   const [toastMessage, setToastMessage] = useState("");
   const [examQuery, setExamQuery] = useState("");
 
-  const navigateTo = useCallback((page) => {
-    setCurrentPage(page);
-    setIsSidebarOpen(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+  const currentPage = pathPages[location.pathname] ?? "inicio";
+
+  const navigateTo = useCallback(
+    (page) => {
+      navigate(pagePaths[page] ?? pagePaths.inicio);
+      setIsSidebarOpen(false);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    },
+    [navigate],
+  );
 
   const showNotification = useCallback((message) => {
     setToastMessage(message);

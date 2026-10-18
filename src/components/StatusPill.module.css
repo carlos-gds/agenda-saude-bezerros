@@ -1,0 +1,23 @@
+.pill {
+  display: inline-flex;
+  border-radius: 20px;
+  padding: 5px 9px;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.green {
+  background: #e1f6ed;
+  color: #18825a;
+}
+
+.blue {
+  background: #e5effc;
+  color: #3d74c0;
+}
+
+.orange {
+  background: #fff1df;
+  color: #bd711c;
+}

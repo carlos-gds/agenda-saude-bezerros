@@ -1,0 +1,9 @@
+{
+  "routes": [
+    { "path": "/", "title": "Início" },
+    { "path": "/agendamento", "title": "Agendar atendimento" },
+    { "path": "/atendimentos", "title": "Meus atendimentos" },
+    { "path": "/exames", "title": "Acompanhamento de exames" },
+    { "path": "/painel", "title": "Painel gestor" }
+  ]
+}

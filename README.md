@@ -28,10 +28,11 @@ O protótipo também inclui uma visão demonstrativa para a Secretaria de Saúde
 ## Tecnologias
 
 - React;
+- React Router;
 - Vite;
 - JavaScript (ES Modules);
 - Lucide React para ícones;
-- CSS responsivo;
+- CSS responsivo e CSS Modules;
 - Prettier para padronização do código.
 
 ## Como executar localmente
@@ -71,7 +72,8 @@ npm run format:check # verifica a formatação sem alterar arquivos
 src/
 ├── components/
 │   ├── AppLayout.jsx       # sidebar, cabeçalho e navegação
-│   └── common.jsx          # componentes reutilizáveis e Error Boundary
+│   ├── common.jsx          # componentes reutilizáveis e Error Boundary
+│   └── StatusPill.module.css # estilo local do badge de status
 ├── data/
 │   └── mockData.js         # dados fictícios da demonstração
 ├── pages/
@@ -80,7 +82,7 @@ src/
 │   ├── DashboardPage.jsx
 │   ├── ExamsPage.jsx
 │   └── HomePage.jsx
-├── App.jsx                 # estado compartilhado e seleção de telas
+├── App.jsx                 # rotas e estado compartilhado
 ├── main.jsx                # ponto de entrada da aplicação
 └── styles.css              # identidade visual e responsividade
 ```

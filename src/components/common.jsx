@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight, Check, HeartPulse, X } from "lucide-react";
+import statusPillStyles from "./StatusPill.module.css";
 
 /**
  * Representa a marca visual da aplicação.
@@ -25,7 +26,13 @@ export function Logo() {
  * @returns {JSX.Element} Badge de status.
  */
 export function StatusPill({ children, tone }) {
-  return <span className={`pill ${tone}`}>{children}</span>;
+  const toneClassName = statusPillStyles[tone] ?? "";
+
+  return (
+    <span className={`${statusPillStyles.pill} ${toneClassName}`}>
+      {children}
+    </span>
+  );
 }
 
 /**
